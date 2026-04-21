@@ -16,7 +16,7 @@ public class MainVueltaEjercicio1 {
 
             Statement statement = connection.createStatement();
 
-            // Una sql para sacar las ciclistas
+            // Una sql para sacar los ciclistas
             String sql = "SELECT ID_CICLISTA, CICLISTA.NOMBRE, NACIONALIDAD, EDAD, EQUIPO.NOMBRE AS NOMBRE_EQUIPO FROM CICLISTA JOIN EQUIPO USING(ID_EQUIPO)";
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -30,11 +30,11 @@ public class MainVueltaEjercicio1 {
                 System.out.println(id + " - " + nombre + " - " + nacionalidad + " - " + edad + " - " + nombreEquipo);
             }
 
-            // Preguntas que de pais quieremos sacar las ciclistas
-            System.out.println("De que pais quieres sacar las ciclistas: ");
+            // Preguntas que de pais quieremos sacar los ciclistas
+            System.out.println("De que pais quieres sacar los ciclistas: ");
             String pais = sc.nextLine();
             
-            // Una sql para sacar las ciclistas con esa pais
+            // Una sql para sacar los ciclistas con esa pais
             String sql2 = "SELECT ID_CICLISTA, CICLISTA.NOMBRE, NACIONALIDAD, EDAD, EQUIPO.NOMBRE AS NOMBRE_EQUIPO FROM CICLISTA JOIN EQUIPO USING(ID_EQUIPO) WHERE EQUIPO.PAIS = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql2);
