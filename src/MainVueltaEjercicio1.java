@@ -16,10 +16,11 @@ public class MainVueltaEjercicio1 {
 
             Statement statement = connection.createStatement();
 
+            // Una sql para sacar las ciclistas
             String sql = "SELECT ID_CICLISTA, CICLISTA.NOMBRE, NACIONALIDAD, EDAD, EQUIPO.NOMBRE AS NOMBRE_EQUIPO FROM CICLISTA JOIN EQUIPO USING(ID_EQUIPO)";
-
             ResultSet resultSet = statement.executeQuery(sql);
 
+            // Un resultset para recorrer los datos y mostrarlos
             while (resultSet.next()) {
                 int id = resultSet.getInt("ID_CICLISTA");
                 String nombre = resultSet.getString("NOMBRE");
@@ -29,9 +30,11 @@ public class MainVueltaEjercicio1 {
                 System.out.println(id + " - " + nombre + " - " + nacionalidad + " - " + edad + " - " + nombreEquipo);
             }
 
+            // Preguntas que de pais quieremos sacar las ciclistas
             System.out.println("De que pais quieres sacar las ciclistas: ");
             String pais = sc.nextLine();
-
+            
+            // Una sql para sacar las ciclistas con esa pais
             String sql2 = "SELECT ID_CICLISTA, CICLISTA.NOMBRE, NACIONALIDAD, EDAD, EQUIPO.NOMBRE AS NOMBRE_EQUIPO FROM CICLISTA JOIN EQUIPO USING(ID_EQUIPO) WHERE EQUIPO.PAIS = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql2);
@@ -39,6 +42,7 @@ public class MainVueltaEjercicio1 {
 
             ResultSet resultSet2 = preparedStatement.executeQuery();
 
+            // Un resultset2 para recorrer los datos y mostrarlos
             while (resultSet2.next()) {
                 int id = resultSet2.getInt("ID_CICLISTA");
                 String nombre = resultSet2.getString("NOMBRE");
